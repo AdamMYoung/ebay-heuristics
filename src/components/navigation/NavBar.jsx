@@ -11,7 +11,7 @@ export const NavBar = () => {
                     <Nav.Link>Map</Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link>Sign-in</Nav.Link>
+                    <Nav.Link onClick={() => alert("Beep Boop I can't sign in yet")}>Sign-in</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
