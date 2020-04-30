@@ -1,12 +1,15 @@
 import React from 'react';
-import Router from "react-router-dom"
+import { BrowserRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Layout } from './components/Layout';
 
 function App() {
-  return (
-    <Router>
-     
-    </Router>
-  );
+    return (
+        <BrowserRouter>
+            <Layout />
+        </BrowserRouter>
+    );
 }
 
 export default App;
