@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { NavBar } from './navigation/NavBar';
-import { Map } from './navigation/Map';
+import { Routes } from './Routes';
 
 export const Layout = () => {
     return (
         <div>
             <NavBar />
             <div style={{ margin: 12 }}>
-                <Map />
+                <Routes />
             </div>
         </div>
     );
