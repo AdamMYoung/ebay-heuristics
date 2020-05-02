@@ -7,8 +7,8 @@ import { Home } from './Home';
 export const Routes = () => {
     return (
         <Switch>
-            <Route path="/" component={Home} />
-            <Route exact path="/callback" component={Callback} />
+            <Route exact path="/" component={Home} />
+            <Route path="/success" component={Callback} />
             <Redirect to="/" />
         </Switch>
     );
