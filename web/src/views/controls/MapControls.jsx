@@ -10,8 +10,8 @@ export const MapControls = (props) => {
     return (
         <div>
             {!props.isAuthenticated && (
-                <Button variant="outline-light" onClick={onLogin}>
-                    Login to eBay
+                <Button variant="outline-light" onClick={onLogin} disabled={props.isLoading}>
+                    {!props.isLoading ? 'Login to eBay' : 'Loading details...'}
                 </Button>
             )}
 

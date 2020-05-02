@@ -9,9 +9,12 @@ export const Callback = () => {
 
     useEffect(() => {
         const queryString = window.location.search;
-        const params = new URLSearchParams(queryString);
-        console.log('Test', queryString);
-        onSignIn(params.get('code'));
+        const start = queryString.indexOf('code=');
+        const end = queryString.indexOf('&');
+
+        const code = queryString.substring(start, end);
+        onSignIn(code);
+
         setRedirect(true);
     }, []);
 
