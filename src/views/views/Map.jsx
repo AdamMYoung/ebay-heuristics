@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import * as L from 'leaflet';
+
 import * as ebayApi from '../../api/ebayApi';
 import * as geocodingApi from '../../api/geocodingApi';
-
+import { getCountryName } from '../../utils/countryCodeUtils';
 import { MapControls } from '../controls/MapControls';
 import { AuthenticationContext } from '../../providers/AuthenticationProvider';
 
@@ -36,12 +37,10 @@ export const Map = () => {
                         address = order.fulfillmentStartInstructions[0].shippingStep.shipTo.contactAddress;
                     }
 
-                    setTimeout();
-
                     const location = await geocodingApi.getGeocodedAddress(
                         address.addressLine1,
                         address.city,
-                        address.countryCode,
+                        getCountryName(address.countryCode),
                         address.postalCode,
                         address.stateOrProvince
                     );
