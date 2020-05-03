@@ -28,26 +28,29 @@ export const Map = () => {
      */
     useEffect(() => {
         const loadAddresses = async () => {
-            orders.forEach(async (order) => {
-                console.log(order);
-                var address = order.fulfillmentStartInstructions[0].finalDestinationAddress;
+            orders.forEach((order) => {
+                setTimeout(async () => {
+                    var address = order.fulfillmentStartInstructions[0].finalDestinationAddress;
 
-                if (!address) {
-                    address = order.fulfillmentStartInstructions[0].shippingStep.shipTo.contactAddress;
-                }
+                    if (!address) {
+                        address = order.fulfillmentStartInstructions[0].shippingStep.shipTo.contactAddress;
+                    }
 
-                const location = await geocodingApi.getGeocodedAddress(
-                    address.addressLine1,
-                    address.city,
-                    address.countryCode,
-                    address.postalCode,
-                    address.stateOrProvince
-                );
+                    setTimeout();
 
-                const marker = L.marker([location[0].lat, location[0].lon]).addTo(map.current);
-                marker.bindPopup(
-                    `<b>${order.buyer.username}</b><br>${address.addressLine1}<br>${address.addressLine2}<br>${address.city}<br>${address.postalCode}`
-                );
+                    const location = await geocodingApi.getGeocodedAddress(
+                        address.addressLine1,
+                        address.city,
+                        address.countryCode,
+                        address.postalCode,
+                        address.stateOrProvince
+                    );
+
+                    const marker = L.marker([location[0].lat, location[0].lon]).addTo(map.current);
+                    marker.bindPopup(
+                        `<b>${order.buyer.username}</b><br>${address.addressLine1}<br>${address.addressLine2}<br>${address.city}<br>${address.postalCode}`
+                    );
+                }, 1000);
             });
         };
         loadAddresses();
