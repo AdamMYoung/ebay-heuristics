@@ -29,7 +29,7 @@ export const Map = () => {
      */
     useEffect(() => {
         const loadAddresses = async () => {
-            orders.forEach((order) => {
+            orders.forEach((order, index) => {
                 setTimeout(async () => {
                     var address = order.fulfillmentStartInstructions[0].finalDestinationAddress;
 
@@ -49,7 +49,7 @@ export const Map = () => {
                     marker.bindPopup(
                         `<b>${order.buyer.username}</b><br>${address.addressLine1}<br>${address.addressLine2}<br>${address.city}<br>${address.postalCode}`
                     );
-                }, 1000);
+                }, index * 1000);
             });
         };
         loadAddresses();
